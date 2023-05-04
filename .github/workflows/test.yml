@@ -1,0 +1,30 @@
+name: Test
+
+on: [ push ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Install Rust toolchain
+        uses: actions-rs/toolchain@v1
+        with:
+          default: true
+          target: wasm32-wasi
+          toolchain: nightly-2023-03-20
+
+      - name: Install Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Build & run project
+        run: |
+          cargo build-wasi --release
+          cd example
+          npm install
+          SWC_DEBUG=1 npm run build
