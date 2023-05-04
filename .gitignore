@@ -1,0 +1,6 @@
+.idea
+/target
+^target/
+target
+/**/.swc
+/**/node_modules
