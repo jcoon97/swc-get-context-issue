@@ -3,7 +3,7 @@
     "experimental": {
       "plugins": [
         [
-          "../target/wasm32-wasi/release/swc_get_context_issue.wasm",
+          "REPLACE_ME",
           {}
         ]
       ]

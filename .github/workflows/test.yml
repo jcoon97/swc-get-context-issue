@@ -25,6 +25,8 @@ jobs:
       - name: Build & run project
         run: |
           cargo build-wasi --release
+          export OUTPUT_PATH=$(pwd)/target/wasm32-wasi/release/swc_get_context_issue.wasm
+          sed -i "s|REPLACE_ME|$OUTPUT_PATH|g" ./example/.swcrc
           cd example
           npm install
           SWC_DEBUG=1 npm run build
